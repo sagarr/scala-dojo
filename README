@@ -1,1 +1,6 @@
-mvn archetype:generate -DarchetypeGroupId=org.scala-tools.archetypes -DarchetypeArtifactId=scala-archetype-simple       -DremoteRepositories=http://scala-tools.org/repo-releases -DgroupId=org.glassfish.samples -DartifactId=game-of-life
+Scala Dojo
+==========
+
+Maven command
+-------------
+	mvn archetype:generate -DarchetypeGroupId=org.scala-tools.archetypes -DarchetypeArtifactId=scala-archetype-simple -DgroupId=com.rohankar.scala -DartifactId=game-of-life
