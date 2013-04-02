@@ -10,11 +10,10 @@ class CellTest extends Assertions {
     val cell: Cell = Cell(1)
     cell addNeighbours (Cell(1)) // only 1 live neighbor
 
-    // when
-    val isAlive = cell shouldBeAliveInNextTick
-
-    // then
-    assert(isAlive === false)
+    expect(Cell(0)) {
+      // when
+      cell nextState
+    }
   }
 
   def testLiveCellShouldBecomeDeadWhenLiveNeighboursCountIsMoreThan3 {
@@ -22,9 +21,9 @@ class CellTest extends Assertions {
     val cell: Cell = Cell(1)
     cell addNeighbours (Cell(1), Cell(1), Cell(1), Cell(1))
 
-    expect(false) {
+    expect(Cell(0)) {
       // when
-      cell shouldBeAliveInNextTick
+      cell nextState
     }
   }
 
@@ -33,11 +32,10 @@ class CellTest extends Assertions {
     val cell: Cell = Cell(1)
     cell addNeighbours (Cell(1), Cell(1))
 
-    // when
-    val isAlive = cell shouldBeAliveInNextTick
-
-    // then
-    assert(isAlive === true)
+    expect(Cell(1)) {
+      // when
+      cell nextState
+    }
   }
 
   def testLiveCellShouldRemainLiveWhenLiveNeighboursCountIsEqualTo3 {
@@ -45,11 +43,10 @@ class CellTest extends Assertions {
     val cell: Cell = Cell(1)
     cell addNeighbours (Cell(1), Cell(1), Cell(1))
 
-    // when
-    val isAlive = cell shouldBeAliveInNextTick
-
-    // then
-    assert(isAlive === true)
+    expect(Cell(1)) {
+      // when
+      cell nextState
+    }
   }
 
   def testDeadCellShouldBecomeLiveWhenLiveNeighboursCountIsEqualTo3 {
@@ -57,10 +54,9 @@ class CellTest extends Assertions {
     val cell: Cell = Cell(0)
     cell addNeighbours (Cell(1), Cell(1), Cell(1))
 
-    // when
-    val isAlive = cell shouldBeAliveInNextTick
-
-    // then
-    assert(isAlive === true)
+    expect(Cell(1)) {
+      // when
+      cell nextState
+    }
   }
 }
