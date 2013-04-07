@@ -1,6 +1,6 @@
 package com.rohankar.game.v2
 
-object GameOfLife {
+object GameOfLife extends Rule {
 
   import Universe._
 
@@ -13,4 +13,16 @@ object GameOfLife {
 
     new Universe(width, height, grid)
   }
+
+  def tick(universe: Universe): Universe = {
+    val alivePositions = for {
+      w <- 0 until universe.width
+      h <- 0 until universe.height
+      p = (w, h)
+      if (isAlive(at(p, universe), lifeAdjacentCount(p, universe)))
+    } yield p
+
+    createUniverse(universe.width, universe.height, alivePositions.toSet)
+  }
+
 }

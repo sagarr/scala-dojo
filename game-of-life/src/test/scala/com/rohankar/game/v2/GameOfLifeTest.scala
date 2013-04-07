@@ -25,4 +25,5 @@ class GameOfLifeTest extends FunSuite with ShouldMatchers {
       IndexedSeq(false, false, false, false, false),
       IndexedSeq(false, false, false, false, false))))
   }
+
 }

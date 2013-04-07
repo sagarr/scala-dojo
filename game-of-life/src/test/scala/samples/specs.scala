@@ -2,7 +2,6 @@ package samples
 
 import org.specs2.mutable._
 import org.junit.Test
-//import org.scalacheck.Gen
 
 /**
  * Sample specification.
