@@ -6,6 +6,9 @@ package com.rohankar.scala
  */
 class BowlingGame {
 
+  val rolles: Array[Int] = new Array(21);
+  var currentRole: Int = 0
+
   def score: Int = {
     var score = 0
     var i = 0;
@@ -25,8 +28,16 @@ class BowlingGame {
     score
   }
 
-  val rolles: Array[Int] = new Array(21);
-  var currentRole: Int = 0
+  def score2: Int = {
+    def scoreRec(frame: Int, i: Int): Int = {
+      if (frame > 10) 0 else (rolles(i), rolles(i + 1), rolles(i) + rolles(i + 1)) match {
+        case (10, _, _) => 10 + rolles(i + 1) + rolles(i + 2) + scoreRec(frame + 1, i + 1)
+        case (_, _, 10) => 10 + rolles(i + 2) + scoreRec(frame + 1, i + 2)
+        case _ => rolles(i) + rolles(i + 1) + scoreRec(frame + 1, i + 2)
+      }
+    }
+    scoreRec(1, 0)
+  }
 
   def roll(pins: Int) {
     rolles(currentRole) = pins
