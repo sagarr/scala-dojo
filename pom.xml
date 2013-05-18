@@ -16,7 +16,8 @@
 
 	<modules>
 		<module>game-of-life</module>
-	</modules>
+		<module>bowling-game</module>
+  </modules>
 
 	<dependencies>
 		<dependency>
