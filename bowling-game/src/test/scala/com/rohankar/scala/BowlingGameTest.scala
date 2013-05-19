@@ -3,6 +3,11 @@ package com.rohankar.scala
 import org.scalatest.FunSuite
 import org.scalatest.matchers.ShouldMatchers
 
+/**
+ * http://codingdojo.org/cgi-bin/wiki.pl?KataBowling
+ *
+ * @author Sagar Rohankar
+ */
 class BowlingGameTest extends FunSuite with ShouldMatchers {
 
   var game: BowlingGame = null;

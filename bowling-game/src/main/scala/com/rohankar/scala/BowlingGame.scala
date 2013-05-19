@@ -1,6 +1,7 @@
 package com.rohankar.scala
 
 /**
+ * http://codingdojo.org/cgi-bin/wiki.pl?KataBowling
  *
  * @author Sagar Rohankar
  */
@@ -31,9 +32,12 @@ class BowlingGame {
   def score2: Int = {
     def scoreRec(frame: Int, i: Int): Int = {
       if (frame > 10) 0 else (rolles(i), rolles(i + 1), rolles(i) + rolles(i + 1)) match {
-        case (10, _, _) => 10 + rolles(i + 1) + rolles(i + 2) + scoreRec(frame + 1, i + 1)
-        case (_, _, 10) => 10 + rolles(i + 2) + scoreRec(frame + 1, i + 2)
-        case _ => rolles(i) + rolles(i + 1) + scoreRec(frame + 1, i + 2)
+        case (10, _, _) // strike 
+        => 10 + rolles(i + 1) + rolles(i + 2) + scoreRec(frame + 1, i + 1)
+        case (_, _, 10) // spare 
+        => 10 + rolles(i + 2) + scoreRec(frame + 1, i + 2)
+        case _ // normal 
+        => rolles(i) + rolles(i + 1) + scoreRec(frame + 1, i + 2)
       }
     }
     scoreRec(1, 0)
@@ -45,9 +49,12 @@ class BowlingGame {
         case 11 => 0
         case f =>
           tempRolles match {
-            case 10 :: rollesTail => 10 + rolles(i + 1) + rolles(i + 2) + scoreRec(f + 1, i + 1, rollesTail)
-            case first :: second :: rollesTail if (rolles(i) + rolles(i + 1) == 10) => 10 + rolles(i + 2) + scoreRec(f + 1, i + 2, rollesTail)
-            case first :: second :: rollesTail => rolles(i) + rolles(i + 1) + scoreRec(f + 1, i + 2, rollesTail)
+            case 10 :: rollesTail // strike
+            => 10 + rolles(i + 1) + rolles(i + 2) + scoreRec(f + 1, i + 1, rollesTail)
+            case first :: second :: rollesTail if (first + second == 10) // spare 
+            => 10 + rolles(i + 2) + scoreRec(f + 1, i + 2, rollesTail)
+            case first :: second :: rollesTail // normal
+            => first + second + scoreRec(f + 1, i + 2, rollesTail)
           }
       }
     }
