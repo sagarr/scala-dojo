@@ -15,7 +15,7 @@ class BowlingGameTest extends FunSuite with ShouldMatchers {
     rollPins(20, 0)
 
     // then
-    game.score2 should be(0)
+    score should be(0)
   }
 
   test("game with each frame score is 1") {
@@ -26,7 +26,7 @@ class BowlingGameTest extends FunSuite with ShouldMatchers {
     rollPins(20, 1)
 
     // then
-    game.score2 should be(20)
+    score should be(20)
   }
 
   test("game with one spare") {
@@ -40,7 +40,7 @@ class BowlingGameTest extends FunSuite with ShouldMatchers {
     rollPins(17, 0)
 
     // then
-    game.score2 should be(16)
+    score should be(16)
   }
 
   test("game with one strike") {
@@ -54,7 +54,7 @@ class BowlingGameTest extends FunSuite with ShouldMatchers {
     rollPins(16, 0)
 
     // then
-    game.score2 should be(24)
+    score should be(24)
   }
 
   test("game with all strike") {
@@ -65,13 +65,14 @@ class BowlingGameTest extends FunSuite with ShouldMatchers {
     rollPins(20, 10)
 
     // then
-    game.score2 should be(300)
+    score should be(300)
   }
 
   private def rollPins(times: Int, pins: Int) {
     for (i <- 0 to times) {
       game.roll(pins)
     }
-
   }
+
+  private def score: Int = game.score3
 }

@@ -39,6 +39,21 @@ class BowlingGame {
     scoreRec(1, 0)
   }
 
+  def score3: Int = {
+    def scoreRec(frame: Int, i: Int, tempRolles: List[Int]): Int = {
+      frame match {
+        case 11 => 0
+        case f =>
+          tempRolles match {
+            case 10 :: rollesTail => 10 + rolles(i + 1) + rolles(i + 2) + scoreRec(f + 1, i + 1, rollesTail)
+            case first :: second :: rollesTail if (rolles(i) + rolles(i + 1) == 10) => 10 + rolles(i + 2) + scoreRec(f + 1, i + 2, rollesTail)
+            case first :: second :: rollesTail => rolles(i) + rolles(i + 1) + scoreRec(f + 1, i + 2, rollesTail)
+          }
+      }
+    }
+    scoreRec(1, 0, rolles.toList)
+  }
+
   def roll(pins: Int) {
     rolles(currentRole) = pins
     currentRole += 1
