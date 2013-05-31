@@ -11,12 +11,16 @@
 	<url>http://maven.apache.org</url>
 
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.6</maven.compiler.source>
+		<maven.compiler.target>1.6</maven.compiler.target>
+		<encoding>UTF-8</encoding>
+		<scala.version>2.10.1-RC2</scala.version>
 	</properties>
-
+	
 	<modules>
 		<module>game-of-life</module>
 		<module>bowling-game</module>
+    <module>fizz-buzz</module>
   </modules>
 
 	<dependencies>

@@ -11,14 +11,7 @@
 	<version>1.0-SNAPSHOT</version>
 	<name>${project.artifactId}</name>
 	<description>My scala dojo app</description>
-	<inceptionYear>2013</inceptionYear>  
-
-	<properties>
-		<maven.compiler.source>1.6</maven.compiler.source>
-		<maven.compiler.target>1.6</maven.compiler.target>
-		<encoding>UTF-8</encoding>
-		<scala.version>2.10.1-RC2</scala.version>
-	</properties>
+	<inceptionYear>2013</inceptionYear>
 
 	<dependencies>
 		<dependency>
