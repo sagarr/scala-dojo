@@ -20,7 +20,8 @@
 	<modules>
 		<module>game-of-life</module>
 		<module>bowling-game</module>
-    <module>fizz-buzz</module>
+		<module>fizz-buzz</module>
+		<module>potter</module>
   </modules>
 
 	<dependencies>
