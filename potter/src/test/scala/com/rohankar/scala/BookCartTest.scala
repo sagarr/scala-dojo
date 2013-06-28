@@ -3,7 +3,7 @@ package com.rohankar.scala
 import org.scalatest.FunSuite
 import org.scalatest.matchers.ShouldMatchers
 
-class bcTest extends FunSuite with ShouldMatchers {
+class BookCartTest extends FunSuite with ShouldMatchers {
 
   test("1 book got no discount") {
     val bc = new BookCart

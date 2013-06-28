@@ -25,13 +25,16 @@ class BookCart {
   //
   private def calcDiscountedPrice(bookCount: Int): Double = {
     if (bookCount > 1) {
-      var discount: Double = 1;
-      if (bookCount == 2 || bookCount == 3)
-        discount = (bookCount - 1) * 0.05
-      else
-        discount = bookCount * 0.05
+      val discount = getDiscountForNumberOfBooks(bookCount);
       (8 * bookCount) - (8 * bookCount * discount)
     } else 8 * bookCount
+  }
+
+  private def getDiscountForNumberOfBooks(bookCount: Int): Double = {
+    if (bookCount == 2 || bookCount == 3)
+      (bookCount - 1) * 0.05
+    else
+      bookCount * 0.05
   }
 
   /**
