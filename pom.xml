@@ -22,6 +22,7 @@
 		<module>bowling-game</module>
 		<module>fizz-buzz</module>
 		<module>potter</module>
+		<module>string-calculator</module>
   </modules>
 
 	<dependencies>
