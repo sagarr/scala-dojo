@@ -23,6 +23,7 @@
 		<module>fizz-buzz</module>
 		<module>potter</module>
 		<module>string-calculator</module>
+		<module>mine-sweeper</module>
   </modules>
 
 	<dependencies>
