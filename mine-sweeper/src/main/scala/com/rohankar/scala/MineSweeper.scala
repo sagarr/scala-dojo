@@ -3,37 +3,22 @@ package com.rohankar.scala
 trait MineSweeper {
 
   def createFieldsAndMines(array: Array[Array[Char]]): Array[Array[Char]] = {
-    for (i <- 0 until array.length) {
-      for (j <- array(i).indices) {
-        if (array(i)(j) == '*') {
-          if (i + 1 < array.length) {
-            array(i + 1)(j) = nextValue(array(i + 1)(j))
-          }
-          if (i - 1 >= 0) {
-            array(i - 1)(j) = nextValue(array(i - 1)(j))
-          }
-          if (j + 1 < array(i).length) {
-            array(i)(j + 1) = nextValue(array(i)(j + 1))
-          }
-          if (j - 1 >= 0) {
-            array(i)(j - 1) = nextValue(array(i)(j - 1))
-          }
-          if (i + 1 < array.length && j + 1 < array(i).length) {
-            array(i + 1)(j + 1) = nextValue(array(i + 1)(j + 1))
-          }
-          if (i + 1 < array.length && j - 1 >= 0) {
-            array(i + 1)(j - 1) = nextValue(array(i + 1)(j - 1))
-          }
-          if (i - 1 >= 0 && j - 1 >= 0) {
-            array(i - 1)(j - 1) = nextValue(array(i - 1)(j - 1))
-          }
-          if (i - 1 >= 0 && j + 1 < array(i).length) {
-            array(i - 1)(j + 1) = nextValue(array(i - 1)(j + 1))
-          }
+
+    val temp: Array[Array[Char]] = array
+
+    for (i <- 0 until array.length; j <- array(i).indices) {
+      if (array(i)(j) == '*') {
+        for {
+          r <- i - 1 to i + 1
+          c <- j - 1 to j + 1
+          if (r >= 0 && c >= 0 && r < array.length && c < array.length)
+        } {
+          temp(r)(c) = nextValue(array(r)(c))
         }
       }
     }
-    array
+    temp
+
   }
 
   private def nextValue(c: Char): Char = {
