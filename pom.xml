@@ -24,6 +24,7 @@
 		<module>potter</module>
 		<module>string-calculator</module>
 		<module>mine-sweeper</module>
+		<module>word-wrap</module>
   </modules>
 
 	<dependencies>
