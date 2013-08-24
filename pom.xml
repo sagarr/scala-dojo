@@ -25,6 +25,7 @@
 		<module>string-calculator</module>
 		<module>mine-sweeper</module>
 		<module>word-wrap</module>
+		<module>args</module>		
   </modules>
 
 	<dependencies>
