@@ -2,15 +2,17 @@ package com.rohankar.scala
 
 object SchemaParser {
 
-  def parse(s: String): List[SchemaEntity] = {
-    def getClass(v: String): Class[_] = {
-      v.trim match {
-        case "boolean" => true.getClass
-        case "integer" => 1.getClass
-      }
-    }
+  def parse(schema: String): Map[String, AnyRef] = {
+    (for (s <- schema.split(";").toList; val dataType = s.substring(2))
+      yield (s.trim.charAt(0).toString -> createValue(dataType))) toMap
+  }
 
-    for (schema <- s.split(";").toList) yield SchemaEntity(schema.trim.charAt(0).toString, getClass(schema.substring(2)))
+  private def createValue(dt: String): AnyRef = {
+    dt.trim match {
+      case "boolean" => Boolean.box(false) // default false
+      case "integer" => new Integer(0) // default 0
+      case _ => throw new Error("data type not supported")
+    }
   }
 
 }

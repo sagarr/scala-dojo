@@ -7,19 +7,19 @@ class SchemaParserTest extends FunSuite with ShouldMatchers {
 
   test("parse single schema") {
     // given
-    val schemas: List[SchemaEntity] = SchemaParser.parse("l boolean")
+    val schemas: Map[String, AnyRef] = SchemaParser.parse("l boolean")
 
     // when
-    schemas(0) should be(SchemaEntity("l", true.getClass))
+    schemas("l") should be(Boolean.box(false))
   }
 
   test("parse 2 schema") {
     // given
-    val schemas: List[SchemaEntity] = SchemaParser.parse("l boolean; d integer")
+    val schemas: Map[String, AnyRef] = SchemaParser.parse("l boolean; d integer")
 
     // when
-    schemas(0) should be(SchemaEntity("l", true.getClass))
-    schemas(1) should be(SchemaEntity("d", 10.getClass))
+    schemas("l") should be(Boolean.box(false))
+    schemas("d") should be(new Integer(0))
   }
 
 }
